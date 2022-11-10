@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: Movice rest api
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:13306/movice_db
+    username: exuser
+    password: 88888888
