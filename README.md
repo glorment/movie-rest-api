@@ -37,4 +37,4 @@
 |role|varchar(255)|Y|---|
 
 ## ER diagram
-![alt text](https://github.com/glorment/movie-rest-api/blob/[branch]/image.jpg?raw=true)
+![ER diagram](https://github.com/glorment/movie-rest-api/blob/main/movice_db.png?raw=true)
