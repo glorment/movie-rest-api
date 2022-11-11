@@ -1,13 +1,13 @@
-package com.example.moviceapi;
+package com.example.movieapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MoviceApiApplication {
+public class MovieApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MoviceApiApplication.class, args);
+		SpringApplication.run(MovieApiApplication.class, args);
 	}
 
 }

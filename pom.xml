@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>movice-api</artifactId>
+	<artifactId>movie-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<name>movice-api</name>
+	<name>movie-api</name>
 	<description>Java Technical Excercise</description>
 	<properties>
 		<java.version>18</java.version>

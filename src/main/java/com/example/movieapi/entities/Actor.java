@@ -1,4 +1,4 @@
-package com.example.moviceapi.entities;
+package com.example.movieapi.entities;
 
 import java.util.ArrayList;
 import java.util.List;

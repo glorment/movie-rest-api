@@ -1,4 +1,4 @@
-package com.example.moviceapi.entities;
+package com.example.movieapi.entities;
 
 import java.io.Serializable;
 import java.util.UUID;

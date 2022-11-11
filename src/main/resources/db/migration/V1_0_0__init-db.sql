@@ -1,4 +1,4 @@
--- movice_db.actor definition
+-- movie_db.actor definition
 
 CREATE TABLE `actor` (
   `id` varchar(255) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE `actor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- movice_db.director definition
+-- movie_db.director definition
 
 CREATE TABLE `director` (
   `id` varchar(255) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE `director` (
 
 
 
--- movice_db.movie definition
+-- movie_db.movie definition
 
 CREATE TABLE `movie` (
   `id` varchar(255) NOT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE `movie` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
--- movice_db.movie_cast definition
+-- movie_db.movie_cast definition
 
 CREATE TABLE `movie_cast` (
   `role` varchar(255) DEFAULT NULL,
