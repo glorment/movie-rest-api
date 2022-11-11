@@ -9,16 +9,20 @@ import org.hibernate.annotations.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Embeddable
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class MovieCastId implements Serializable{
   @Type(type = "uuid-char")
-  UUID movieId;
+  private UUID movieId;
 
   @Type(type = "uuid-char")
-  UUID actorId;
+  private UUID actorId;
 
 
 

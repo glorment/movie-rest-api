@@ -5,31 +5,41 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
 @Data
+@ToString
+@NoArgsConstructor
 public class MovieCast {
 
   @EmbeddedId
-  MovieCastId id;
+  private MovieCastId id;
 
-  String role;
+  private String role;
 
   @ManyToOne
   @MapsId("movieId")
-  Movie movie;
+  @ToString.Exclude
+  @JsonBackReference
+  private Movie movie;
 
   @ManyToOne
   @MapsId("actorId")
-  Actor actor;
+  @ToString.Exclude
+  @JsonBackReference
+  private Actor actor;
 
 
-  public MovieCast(Movie movie , Actor actor , String role){
+  public MovieCast(Movie movie, Actor actor , String role){
     this.movie = movie;
     this.actor = actor;
     this.role = role;
 
-    this.id= new MovieCastId(movie.id , actor.id);
+    this.id= new MovieCastId(movie.getId() , actor.getId());
   }
 }

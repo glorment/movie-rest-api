@@ -13,6 +13,10 @@ spring:
     open-in-view: true
     hibernate:
       ddl-auto: none
+  security:
+    user:
+      name: admin
+      password: 88888888
 logging:
   level:
     '[com.example]': debug

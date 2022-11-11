@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -14,42 +15,55 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 
+import com.example.movieapi.controller.dto.MovieDto;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
+import lombok.extern.slf4j.Slf4j;
 
 @Entity
 @Data
 @JsonInclude(Include.NON_NULL)
+@Slf4j
+@NoArgsConstructor
+@ToString
 public class Movie {
   @Id
   @Type(type = "uuid-char")
-  UUID id;
+  @GeneratedValue(generator = "UUID")
+  private UUID id;
 
-  String title;
+  private String title;
 
-  Integer year;
+  private Integer year;
 
-  Integer time;
+  private Integer time;
 
-  String lang;
+  private String lang;
 
-  Date releaseDate;
+  private Date releaseDate;
 
-  String releaseCountry;
+  private String releaseCountry;
 
   @ManyToOne
   @JoinColumn(name="director_id" )
-  Director director;
+  private Director director;
 
   @OneToMany(mappedBy = "movie",cascade = CascadeType.ALL,orphanRemoval = true)
-  List<MovieCast> movieCast = new ArrayList<>();
+  @JsonManagedReference
+  private List<MovieCast> movieCast = new ArrayList<>();
   
 
   public void addCast(Actor actor, String role){
+
     MovieCast cast = new MovieCast(this,actor,role);
+    // log.debug("cast = {}",cast);
     movieCast.add(cast);
-    actor.getMovies().add(cast);
+    
+    
   }
 
   public void removeCast(Actor actor){
@@ -65,5 +79,19 @@ public class Movie {
         
       }
     }
+  }
+
+  public Movie(MovieDto dto){    
+    update(dto);
+
+  }
+
+  public void update(MovieDto dto){
+    this.time= dto.getTime();
+    this.year = dto.getYear();
+    this.lang = dto.getLang();
+    this.releaseCountry=dto.getReleaseCountry();
+    this.releaseDate = dto.getReleaseDate();
+    this.title = dto.getTitle();
   }
 }
