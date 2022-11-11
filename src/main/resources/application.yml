@@ -8,3 +8,14 @@ spring:
     url: jdbc:mariadb://127.0.0.1:13306/movice_db
     username: exuser
     password: 88888888
+  jpa:
+    show-sql: false
+    open-in-view: true
+    hibernate:
+      ddl-auto: none
+logging:
+  level:
+    '[com.example]': debug
+    root: ERROR
+  pattern:
+    console: "%clr(%d{dd/MM E HH:mm:ss.SSS}){blue} %clr(%-5p) %clr(${PID}){faint} %clr(---){faint} %clr([%8.15t]){cyan} %clr(%-40.40logger{0}){blue} %clr(:){red} %clr(%m){faint}%n"
