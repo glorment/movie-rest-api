@@ -15,6 +15,9 @@ spring:
       ddl-auto: none
   security:
     user:
+      name: user
+      password: 99999999
+    admin:
       name: admin
       password: 88888888
 logging:
