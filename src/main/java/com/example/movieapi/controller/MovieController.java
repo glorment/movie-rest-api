@@ -1,6 +1,7 @@
 package com.example.movieapi.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +12,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,12 +29,11 @@ import com.example.movieapi.repositories.ActorRepository;
 import com.example.movieapi.repositories.DirectorRepository;
 import com.example.movieapi.repositories.MovieRespository;
 import com.example.movieapi.repositories.MovieSpecification;
+import com.segment.analytics.Analytics;
+import com.segment.analytics.messages.IdentifyMessage;
+import com.segment.analytics.messages.TrackMessage;
 
 import lombok.extern.slf4j.Slf4j;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @RestController
@@ -119,4 +121,28 @@ public class MovieController {
     return new ResponseEntity<>(movieRespository.findAll(result) , HttpStatus.OK);
     
   }
+
+  @GetMapping(value="/segment")
+  public  ResponseEntity<Void> segment() {
+    var analytics = Analytics.builder("CG12dzxYU0zjEi4d5bbj0RbGTIAKG5DH").endpoint("https://events.eu1.segmentapis.com").build();
+    // var map = new HashMap<String,String>();
+    // var userId = UUID.randomUUID().toString();
+    
+    // map.put("name", "Michael Bolton");
+    // map.put("email", "mbolton@example.com");
+    
+    // analytics.enqueue(IdentifyMessage.builder()
+    //         .userId(userId)
+    //                 .traits(map));
+
+
+      var msgMapmap = new HashMap<String,String>();
+      msgMapmap.put("test", "Enterprise");
+
+      analytics.enqueue(TrackMessage.builder("Signed Up22").userId("noId").properties(msgMapmap));
+
+return ResponseEntity.ok().build();
+
+  }
+  
 }
